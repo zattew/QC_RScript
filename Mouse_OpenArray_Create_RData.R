@@ -153,4 +153,32 @@ fdata$miRBase_ID_21[fdata$miRBase_ID_21 == ""] <- NA
 
 write.table(fdata,file="fdata.txt",sep="\t",col.names = T,row.names = F)
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Filtering e normalizzazione
+#---------------------------------------------------------------------------------------------------------------------------------------
+#rimuovo controlli positivi e acque
+dataset <- dataset[,!pData(dataset)$genotipo%in%c("H2O","C+")]
 
+#rimuovo i miRNA di controllo
+fdata<-fData(dataset)
+fdata<-fdata[-grep("U6|RNU44|RNU48|at|sno|Y1|U87",fdata$featureNames),]
+dataset<-dataset[-grep("U6|RNU44|RNU48|at|sno|Y1|U87",rownames(dataset)),]
+
+#Normalizzo rimuovendo la media geometrica
+mymir <- c("hsa-miR-24_000402","hsa-miR-484_001821","hsa-miR-191_002299","hsa-miR-126_002228","hsa-miR-16_000391")
+normfac<-psych::geometric.mean((exprs(dataset)[fData(dataset)$featureNames%in%mymir,]))
+
+dataset.norm <- dataset
+for( i in 1:length(normfac))
+{
+  exprs(dataset.norm)[,i] <- exprs(dataset.norm)[,i] - normfac[i]
+}
+
+eset <- dataset.norm
+save(eset,file="Eset.RData")
+          
+          
+          
+          
+          
+          
