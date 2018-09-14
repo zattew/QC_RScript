@@ -119,7 +119,9 @@ for(i in 1:ncol(dataset))
   featureCategory(dataset)[,i]<-as.numeric(featureCategory(dataset)[,i])
 
 # annotazione miRBASE 21
-annot<-read.table("megaplex-pools-array-card-content.txt",sep="\t",header=T,as.is=T,quote="",comment.char="")
+annot<-read.table("C:/Users/milanimatteo/annotazioni_geni/Mouse_OpenArray_miRBASE21/megaplex-pools-array-card-content.txt",
+sep="\t",header=T,as.is=T,quote="",comment.char="")
+
 annot<-annot[,c(3,5,6,7)]
 single<-names(which(table(annot$Assay.ID)<2))
 annot1<-annot[annot$Assay.ID%in%single|annot$Control.Assay!="",]
