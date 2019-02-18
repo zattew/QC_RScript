@@ -30,7 +30,7 @@ dev.off()
 #---------------------------------------------------------------------------------------------------------------
 
 source("C:/Users/milanimatteo/funzioni/heat_cluster.R")
-source("C:/Users/milanimatteo/funzioni/heatmap.33.R")
+source("C:/Users/milanimatteo/funzioni/heatmap_33.R")
 
 correl1<-cor(log2(exprs(rawData)))
 correl2<-cor(exprs(eset))
