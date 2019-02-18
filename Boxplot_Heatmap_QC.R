@@ -32,7 +32,7 @@ dev.off()
 source("C:/Users/milanimatteo/funzioni/heat_cluster.R")
 source("C:/Users/milanimatteo/funzioni/heatmap_33.R")
 
-correl1<-cor(log2(exprs(rawData)))
+correl1<-cor(log2(exprs(rawdata)))
 correl2<-cor(exprs(eset))
 
 
@@ -40,7 +40,7 @@ pdf() #HEATMAP
 par(xpd=TRUE, cex.axis=0.8)
 
 #rawdata
-LISTA <- heat.cluster(eset = rawData,
+LISTA <- heat.cluster(eset = rawdata,
                       col.cluster = c("Ceppo.topo","gruppi","RIN.class"), #Classi del pDATA
                       col.names.color = c("Ceppo","Gruppo","RIN")) #Nomi delle classi sull'HEATMAP
 
