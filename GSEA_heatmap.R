@@ -1,5 +1,5 @@
 rm(list=ls());gc()
-setwd('C:/Users/milanimatteo/progetti/Renzi/confronto_genico/gsea/')
+setwd('C:/Users/milanimatteo/progetti/....')
 
 library(Biobase)
 library(gplots)
@@ -14,7 +14,7 @@ source('C:/Users/milanimatteo/funzioni/qc.r')
 #Hallmarks
 ##----------------------------------------------------------------------------------------------------
 
-files<-list.files("C:/Users/milanimatteo/progetti/Renzi/confronto_genico/gsea/","gsea_report_for_na",recursive=T,full.names=T)
+files<-list.files("directory","gsea_report_for_na",recursive=T,full.names=T)
 files<-grep(".xls",files,value=T)
 
 lista <- c("BALBc","NeuT")
